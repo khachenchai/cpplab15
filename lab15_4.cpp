@@ -11,11 +11,20 @@ int main(){
 	srand(time(0));	
 	
 	for(int i = 0;i < 10;i++){
-	    shuffle(a,b,c,d);
-	    cout << a << " " << b << " " << c << " " << d << endl;
+		shuffle(a,b,c,d);
+		cout << a << " " << b << " " << c << " " << d << endl;
 	}
 	
 	return 0;
 }
 
 //Do not modify source code above this line
+void shuffle(int &a,int &b,int &c,int &d) {
+	int *nums[4] = {&a, &b, &c, &d};
+	for (int i = 3; i > 0; i--) {
+		int x = rand()%i;
+		int temp = *nums[i];
+		*nums[i] = *nums[x];
+		*nums[x] = temp;
+	}
+}
